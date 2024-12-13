@@ -96,41 +96,4 @@ public class TransformingObservables : MonoBehaviour
           .Scan((totalScore, kill) => totalScore + 10) // 每次击杀增加 10 分  
           .Subscribe(score => Debug.Log($"玩家分数: {score}"));
     }
-
-    ///// <summary>
-    ///// 综合示例1
-    ///// </summary>
-    //[Button("ComprehensiveExample1")]
-    //private void ComprehensiveExample1()
-    //{
-    //    // 模拟一个数据流，每 100 毫秒发射一个数据  
-    //    var source = Observable.Interval(TimeSpan.FromMilliseconds(100));
-
-    //    // 统计 1 秒内的数据量  
-    //    var windowed = source
-    //        .Buffer(TimeSpan.FromSeconds(1)); // 每 1 秒一个窗口  
-
-    //    // 根据数据量动态处理  
-    //    windowed.Subscribe(result =>
-    //    {
-    //        if (result.Count > 10)
-    //        {
-    //            // 如果数据量超过 10 条，启用 Buffer  
-    //            result.Window.Buffer(TimeSpan.FromSeconds(1))
-    //                .Subscribe(buffer =>
-    //                {
-    //                    Debug.Log($"Buffered {buffer.Count} items: {string.Join(", ", buffer)}");
-    //                });
-    //        }
-    //        else
-    //        {
-    //            // 如果数据量少于等于 10 条，直接处理数据  
-    //            result.Window.Subscribe(item =>
-    //            {
-    //                Debug.Log($"Direct item: {item}");
-    //            });
-    //        }
-    //    });
-    //}
-
 }

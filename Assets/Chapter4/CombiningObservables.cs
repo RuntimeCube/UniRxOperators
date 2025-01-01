@@ -147,4 +147,23 @@ public class CombiningObservables : MonoBehaviour
                 Debug.Log("Combined stream");
             });
     }
+
+    [Button("RunConcat")]
+    void RunConcat()
+    {
+        // 第一个 Observable 发射 1 到 3  
+        var observable1 = Observable.Range(1, 3);
+
+        // 第二个 Observable 发射 4 到 6  
+        var observable2 = Observable.Range(4, 3);
+
+        // 使用 Concat 顺序连接两个 Observable  
+        Observable.Concat(observable1, observable2)
+            .Subscribe(
+                x => Debug.Log($"OnNext: {x}"),
+                () => Debug.Log("OnCompleted")
+            );
+        //complete只会执行一次
+    }
+
 }
